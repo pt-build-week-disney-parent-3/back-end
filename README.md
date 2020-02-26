@@ -86,6 +86,7 @@ Contractors
 - email
 - DOB
 - phone_number
+- cpr_cert (default is false)
 
 Requests
 - username
