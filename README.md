@@ -1,5 +1,3 @@
-# back-end
-
 # Endpoints needed for Disney Project
 
 # Parents / Children

@@ -1,0 +1,37 @@
+{
+  "name": "pt-build-week-disney-parent-3",
+  "version": "1.0.0",
+  "description": "As a parent with small children, wouldn't you like to make your Disney Experience more fun and economical?  Disney Parent puts the tools in your hands to be able to swap childcare and stroller passes with other parents allowing you save money and enjoy the 'big-kid' rides.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose --watch",
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pt-build-week-disney-parent-3/back-end"
+  },
+  "keywords": [],
+  "author": "Tiffany Simionescu",
+  "license": "ISC",
+  "homepage": "https://github.com/pt-build-week-disney-parent-3/back-end",
+  
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.4",
+    "nodemon": "^2.0.2",
+    "sqlite3": "^4.1.1"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.0",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  }
+}
