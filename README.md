@@ -59,15 +59,19 @@
 
 # Database Information
 
-Parents
+Users
 - username
 - password
 - first_name
 - last_name
 - email
-- DOB
+- dob
 - phone_number
-- cpr_cert (default is false)
+- cpr_cert (defaultTo false)
+- type
+
+Parents
+- user_id
 
 Children
 - first_name
@@ -79,14 +83,8 @@ Children
 - parent_id
 
 Contractors
-- username
-- password
-- first_name
-- last_name
-- email
-- DOB
-- phone_number
-- cpr_cert (default is false)
+- price
+- user_id
 
 Requests
 - username
