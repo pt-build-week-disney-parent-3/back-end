@@ -91,6 +91,7 @@ Requests
 - first_name
 - last_name
 - request
+- child_count
 - location
 - time
 - parent_id
@@ -110,6 +111,7 @@ Offers
 - first_name
 - last_name
 - offer
+- max_child_count
 - location
 - time
 - user_id
