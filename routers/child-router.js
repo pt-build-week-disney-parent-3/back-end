@@ -10,7 +10,7 @@ const {
 // GET - /api/children/parent/:id 
 // Get all children for parent
 childRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
-  Children.find()
+  Children.findParent(req.params.id)
     .then(children => {
       res.status(200).json(children);
     })

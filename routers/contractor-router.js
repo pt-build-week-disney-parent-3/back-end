@@ -22,7 +22,7 @@ contractorRouter.get('/', restricted(), (req, res) => {
 
 // GET - /api/contractors/:id
 contractorRouter.get('/:id', restricted(), validateContractorId(), (req, res) => {
-  Contractors.findBy({ username }) // might need to change if using email for login
+  Contractors.findById(req.params.id)
     .then(contractor => {
       res.status(200).json(contractor);
     })

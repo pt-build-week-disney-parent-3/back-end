@@ -19,7 +19,7 @@ parentRouter.get('/', restricted(), (req, res) => {
 
 // GET - /api/parents/:id
 parentRouter.get('/:id', restricted(), validateParentId(), (req, res) => {
-  Parents.findBy({ username }) // use both username and email
+  Parents.findById(req.params.id)
     .then(parent => {
       res.status(200).json(parent)
     })

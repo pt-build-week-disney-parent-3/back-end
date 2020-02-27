@@ -11,7 +11,7 @@ const {
 // GET - /api/offers/user/:id
 // Get all user's offers
 offerRouter.get('/user/:id', restricted(), validateUserId(), (req, res) => {
-  Offers.find()
+  Offers.findUser(req.params.id)
     .then(offers => {
       res.status(200).json(offers)
     })

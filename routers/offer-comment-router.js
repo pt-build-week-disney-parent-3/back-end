@@ -10,7 +10,7 @@ const {
 // GET - /api/offercomments/offer/:id 
 // Get all offer comments
 offerCommentRouter.get('/offer/:id', restricted(), validateOfferId(), (req, res) => {
-  OfferComments.find()
+  OfferComments.findOffer(req.params.id)
     .then(offerComments => {
       res.status(200).json(offerComments)
     })
