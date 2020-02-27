@@ -64,9 +64,9 @@ authRouter.post('/register', (req, res) => {
 
 // POST - /api/auth/login
 authRouter.post('/login', (req, res) => {
-  let { username, password } = req.body; // might need to change if login by email
+  let { username, email, password } = req.body; // both username and email for login
 
-  Auth.findBy({ username }) // might need to change if login by email
+  Auth.findBy({ username, email }) // both username and email for login
     .first()
     .then(user => {
       if (user && bcrypt.compareSync(password, user.password)) {
