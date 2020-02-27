@@ -5,7 +5,7 @@ const restricted = require('../middleware/restricted');
 const { 
   validateParentId, 
   validateParentPost,
-} = require('../middleware/verification');
+} = require('../middleware/verify-parents');
 
 // GET - /api/parents
 parentRouter.get('/', restricted(), (req, res) => {
