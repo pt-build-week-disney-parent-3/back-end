@@ -6,7 +6,7 @@ const {
   validateUserId,
   validateQuestionId,
   validateQuestionPost,
-} = require('../middleware/verification');
+} = require('../middleware/verify-questions');
 
 // GET - /api/questions
 questionRouter.get('/', restricted(), (req, res) => {

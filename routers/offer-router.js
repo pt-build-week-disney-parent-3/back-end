@@ -6,7 +6,7 @@ const {
   validateUserId,
   validateOfferId,
   validateOfferPost,
-} = require('../middleware/verification');
+} = require('../middleware/verify-offers');
 
 // GET - /api/offers/user/:id
 // Get all user's offers

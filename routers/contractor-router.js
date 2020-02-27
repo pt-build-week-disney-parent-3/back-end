@@ -5,7 +5,7 @@ const restricted = require('../middleware/restricted');
 const {
   validateContractorId,
   validateContractorPost,
-} = require('../middleware/verification');
+} = require('../middleware/verify-contractors');
 
 // GET - /api/contractors
 contractorRouter.get('/', restricted(), (req, res) => {

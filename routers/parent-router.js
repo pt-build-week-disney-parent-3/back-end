@@ -2,7 +2,10 @@ const parentRouter = require('express').Router();
 const Parents = require('../models/parent-model');
 
 const restricted = require('../middleware/restricted');
-const { validateParentId } = require('../middleware/verification');
+const { 
+  validateParentId, 
+  validateParentPost,
+} = require('../middleware/verify-parents');
 
 // GET - /api/parents
 parentRouter.get('/', restricted(), (req, res) => {
@@ -31,7 +34,7 @@ parentRouter.get('/:id', restricted(), validateParentId(), (req, res) => {
 })
 
 // PUT - /api/parents/:id
-parentRouter.put('/:id', restricted(), validateParentId(), (req, res) => {
+parentRouter.put('/:id', restricted(), validateParentId(), validateParentPost(), (req, res) => {
   const changes = req.body;
   
   Parents.update(req.params.id, changes)

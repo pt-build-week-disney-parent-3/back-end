@@ -4,8 +4,9 @@ const OfferComments = require('../models/offer-comment-model');
 const restricted = require('../middleware/restricted');
 const {
   validateOfferId,
+  validateOfferCommentId,
   validateOfferCommentPost,
-} = require('../middleware/verification');
+} = require('../middleware/verify-offer-comments');
 
 // GET - /api/offercomments/offer/:id 
 // Get all offer comments
