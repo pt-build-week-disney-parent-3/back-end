@@ -5,7 +5,7 @@ const {
   validateParentId,
   validateChildPost,
   validateChildId,
-} = require('../middleware/verification');
+} = require('../middleware/verify-children');
 
 // GET - /api/children/parent/:id 
 // Get all children for parent
