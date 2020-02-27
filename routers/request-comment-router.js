@@ -2,7 +2,12 @@ const requestCommentRouter = require('express').Router();
 const RequestComments = require('../models/request-comment-model');
 
 const restricted = require('../middleware/restricted');
-const {} = require('../middleware/verification');
+const {
+  validateRequestId,
+  validateRequestCommentId,
+  validateRequestCommentPost,
+
+} = require('../middleware/verification');
 
 // GET - /api/reqcomments/request/:id
 // get all request comments for a request

@@ -2,7 +2,11 @@ const requestRouter = require('express').Router();
 const Requests = require('../models/request-model');
 
 const restricted = require('../middleware/restricted');
-const {} = require('../middleware/verification');
+const {
+  validateParentId,
+  validateRequestId,
+  validateRequestPost,
+} = require('../middleware/verification');
 
 // GET - /api/requests/parent/:id
 // get all the requests from a parent

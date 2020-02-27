@@ -2,7 +2,11 @@ const answerRouter = require('express').Router();
 const Answers = require('../models/answer-model');
 
 const restricted = require('../middleware/restricted');
-const {} = require('../middleware/verification');
+const {
+  validateQuestionId,
+  validateAnswerId,
+  validateAnswerPost
+} = require('../middleware/verify-answers');
 
 // GET - /api/answers/question/:id
 // get all answers to a question
