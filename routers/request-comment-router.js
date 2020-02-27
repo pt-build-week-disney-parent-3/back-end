@@ -7,7 +7,7 @@ const {
   validateRequestCommentId,
   validateRequestCommentPost,
 
-} = require('../middleware/verification');
+} = require('../middleware/verify-request-comments');
 
 // GET - /api/reqcomments/request/:id
 // get all request comments for a request
