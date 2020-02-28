@@ -1,11 +1,13 @@
 # Endpoints needed for Disney Project
 
-# Parents / Children
+# Parents
 - GET - /api/parents
 - GET - /api/parents/:id
-- PUT - /api/parents/:id 
-- GET - /api/children/parent/:id (All children for parent) 
-- POST - /api/children 
+- PUT - /api/parents/:id
+
+# Children
+- GET - /api/children/parent/:id (All children for selected parent)
+- POST - /api/children
 - PUT - /api/children/:id
 - DELETE - /api/children/:id
 
@@ -15,51 +17,57 @@
 - PUT - /api/contractors/:id
 
 # Auth
-- POST - /api/auth/register 
-- POST - /api/auth/login
+- POST - /api/auth/register/parent
+- POST - /api/auth/register/contractor
+- POST - /api/auth/login/parent
+- POST - /api/auth/login/contractor
 
-# Requests / ReqComments
-- GET - /api/requests/parent/:id (Get all parent requests)
-- GET - /api/reqcomments/request/:id (Get all comments for a request)
-- POST - /api/requess
-- POST - /api/reqcomments
+# Requests
+- GET - /api/requests/parent/:id (Only parents can make a request, get all request from parent)
+- POST /api/requests
 - PUT - /api/requests/:id
-- PUT - /api/reqcomments/:id 
-- DELETE - /api/requests/:id 
-- DELETE - /api/reqcomments/:id 
+- DELETE - /api/requests/:id
 
-# Offers / OfferComments
-- GET - /api/offers/user/:id (Get all user offers) 
-- GET - /api/offercomments/offer/:id (Get all offer comments for an offer)
-- POST - /api/offers 
-- POST - /api/offercomments 
-- PUT - /api/offers/:id 
+# Request Comments
+- GET - /api/reqcomments/request/:id (Get all request comments for a request)
+- POST - /api/reqcomments
+- PUT - /api/reqcomments/:id
+- DELETE - /api/reqcomments/:id
+
+# Offers
+- GET - /api/offers/contractor/:id (Only contractors can make an offer. Get all offers from contractor)
+- POST - /api/offers
+- PUT - /api/offers/:id
+- DELETE - /api/offers/:id
+
+# Offer Comments
+- GET - /api/offercomments/offer/:id - (Get all offer comments for an offer)
+- POST - /api/offercomments
 - PUT - /api/offercomments/:id
-- DELETE - /api/offers/:id 
 - DELETE - /api/offercomments/:id
 
-
-# Questions / Answers
-- GET - / api/answers/question/:id (Get all answers to a question)
+# Parent Questions 
+- GET - /api/questions/parent/:id (Get all questions from a user) 
 - GET - /api/questions
-- GET - /api/questions/user/:id (Get all questions from a user) 
-- PUT - /api/anwers/:id 
-- PUT - /api/questions/:id 
-- POST - /api/answers 
 - POST - /api/questions 
-- DELETE - /api/answers/:id 
+- PUT - /api/questions/:id 
 - DELETE - /api/questions/:id 
 
+# Contractor Answers
+- GET - / api/answers/question/:id (Get all answers to a question)
+- POST - /api/answers 
+- PUT - /api/anwers/:id 
+- DELETE - /api/answers/:id 
 
 // Contractors can Ask and Answer Questions, respond to requests, make an offer. Cannot make requests
 
-// Parents can Ask and Answer Quesions, make and respond to requests, make an offer
+// Parents can Ask and Answer Quesions, make and respond to requests. Cannot make offers
 
 // Children can only be added to Parents
 
 # Database Information
 
-Users
+Parents
 - username
 - password
 - first_name
@@ -68,10 +76,6 @@ Users
 - dob
 - phone_number
 - cpr_cert (defaultTo false)
-- type
-
-Parents
-- user_id
 
 Children
 - first_name
@@ -83,8 +87,15 @@ Children
 - parent_id
 
 Contractors
+- username
+- password
+- first_name
+- last_name
+- email
+- dob
+- phone_number
+- cpr_cert (defaultTo false)
 - price
-- user_id
 
 Requests
 - username
@@ -104,7 +115,7 @@ Request_Comments
 - last_name
 - request_comment
 - request_id
-- user_id
+- contractor_id
 
 Offers
 - username
@@ -114,7 +125,7 @@ Offers
 - max_child_count
 - location
 - time
-- user_id
+- contractor_id
 
 Offer_Comments
 - username
@@ -122,14 +133,14 @@ Offer_Comments
 - last_name
 - offer_comment
 - offer_id
-- user_id
+- parent_id
 
 Questions
 - username
 - first_name
 - last_name
 - question
-- user_id
+- parent_id
 
 Answers
 - username
@@ -137,4 +148,4 @@ Answers
 - last_name
 - answer
 - question_id
-- user_id
+- contractor_id
