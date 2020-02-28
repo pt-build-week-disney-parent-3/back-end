@@ -1,14 +1,14 @@
 const Offers = require('../models/offer-model');
 
 module.exports = {
-  validateUserId,
+  validateContractorId,
   validateOfferId,
   validateOfferPost
 }
 
-function validateUserId() {
+function validateContractorId() {
   return (req, res, next) => {
-    Offers.findUser(req.params.id)
+    Offers.findContractor(req.params.id)
       .then(user => {
         if (user) {
           req.user = user;
@@ -78,9 +78,9 @@ function validateOfferPost() {
       return res.status(400).json({
         message: "Please provide a time for your offer."
       })
-    } else if (!req.body.user_id) {
+    } else if (!req.body.contractor_id) {
       return res.status(400).json({
-        message: "Please provide a user id for your offer."
+        message: "Please provide a contractor id for your offer."
       })
     } else {
       next();

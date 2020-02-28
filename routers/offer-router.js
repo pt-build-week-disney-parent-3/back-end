@@ -3,15 +3,15 @@ const Offers = require('../models/offer-model');
 
 const restricted = require('../middleware/restricted');
 const {
-  validateUserId,
+  validateContractorId,
   validateOfferId,
   validateOfferPost,
 } = require('../middleware/verify-offers');
 
-// GET - /api/offers/user/:id
-// Get all user's offers
-offerRouter.get('/user/:id', restricted(), validateUserId(), (req, res) => {
-  Offers.findUser(req.params.id)
+// GET - /api/offers/contractor/:id
+// Get all contractor's offers
+offerRouter.get('/contractor/:id', restricted(), validateContractorId(), (req, res) => {
+  Offers.findContractor(req.params.id)
     .then(offers => {
       res.status(200).json(offers)
     })
@@ -29,6 +29,7 @@ offerRouter.post('/', restricted(), validateOfferPost(), (req, res) => {
       res.status(201).json(offer)
     })
     .catch(err => {
+      console.error(err);
       res.status(500).json({
         message: "There was an error while trying to add a new offer. Please try again later."
       })
@@ -52,7 +53,8 @@ offerRouter.put('/:id', restricted(), validateOfferId(), validateOfferPost(), (r
 
 // DELETE - /api/offers/:id
 offerRouter.delete('/:id', restricted(), validateOfferId(), (req, res) => {
-  Offers.remove(() => {
+  Offers.remove(req.params.id)
+    .then(() => {
     res.status(200).json({
       message: "The offer was removed from the Database"
     })
