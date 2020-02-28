@@ -59,9 +59,9 @@
 - PUT - /api/anwers/:id 
 - DELETE - /api/answers/:id 
 
-// Contractors can Ask and Answer Questions, respond to requests, make an offer. Cannot make requests
+// Contractors can Answer Questions, respond to requests, make an offer. Cannot make requests or ash questions
 
-// Parents can Ask and Answer Quesions, make and respond to requests. Cannot make offers
+// Parents can Ask Quesions, make and respond to requests. Cannot make offers or answer questions
 
 // Children can only be added to Parents
 
