@@ -29,6 +29,7 @@ requestRouter.post('/', restricted(), validateRequestPost(), (req, res) => {
       res.status(201).json(request)
     })
     .catch(err => {
+      console.error(err);
       res.status(500).json({
         message: "There was an error while trying to add a request. Please try again later."
       })

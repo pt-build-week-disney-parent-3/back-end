@@ -8,16 +8,30 @@ module.exports = {
   remove
 }
 
+const requestData = db("requests")
+    .join("parents", "requests.parent_id", "parents.parent_id")
+    .select(
+      "parents.parent_id",
+      "requests.request_id",
+      "requests.username",
+      "requests.first_name",
+      "requests.last_name",
+      "requests.request",
+      "requests.child_count",
+      "requests.location",
+      "requests.time",
+      "requests.stroller",
+      "requests.ride"
+    )
+
 function findById(request_id) {
-  return db("requests")
+  return db(requestData)
     .where({ request_id })
-    .first();
 }
 
 function findParent(parent_id) {
   return db("requests")
     .where({ parent_id })
-    .first();
 }
 
 async function add(request) {
