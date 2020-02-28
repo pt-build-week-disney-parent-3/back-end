@@ -6,7 +6,7 @@ exports.seed = function(knex) {
       last_name: "Simionescu",
       request_comment: "I am willing to take the job for you.",
       request_id: 1,
-      user_id: 2
+      contractor_id: 1
     }
   ])
 }
