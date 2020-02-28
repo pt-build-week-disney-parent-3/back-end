@@ -68,6 +68,8 @@ function validateChildPost() {
       return res.status(400).json({
         message: "Please provide a parent id for your child."
       })
+    } else {
+      next();
     }
   }
 }

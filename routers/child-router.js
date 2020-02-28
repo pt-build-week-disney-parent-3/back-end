@@ -15,6 +15,7 @@ childRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
       res.status(200).json(children);
     })
     .catch(err => {
+      console.error(err);
       res.status(500).json({
         message: "There was an error while retreiving the parent's children. Please try again later."
       })
