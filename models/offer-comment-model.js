@@ -8,16 +8,27 @@ module.exports = {
   remove
 }
 
+const offerCommentData = db("offer_comments")
+    .join("offers", "offer_comments.offer_id", "offers.offer_id")
+    .join("parents", "offer_comments.parent_id", "parents.parent_id")
+    .select(
+      "offer_comments.offer_comment_id",
+      "offers.offer_id",
+      "parents.parent_id",
+      "offer_comments.username",
+      "offer_comments.first_name",
+      "offer_comments.last_name",
+      "offer_comments.offer_comment",
+    )
+
 function findOffer(offer_id) {
-  return db("offer_comments")
+  return db(offerCommentData)
     .where({ offer_id})
-    .first()
 }
 
 function findById(offer_comment_id) {
   return db("offer_comments")
     .where({ offer_comment_id})
-    .first();
 }
 
 async function add(offer_comment) {

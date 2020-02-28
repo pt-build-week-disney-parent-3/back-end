@@ -70,9 +70,9 @@ function validateOfferCommentPost() {
       return res.status(400).json({
         message: "Please provide an offer id for your offer comment."
       })
-    } else if (!req.body.user_id) {
+    } else if (!req.body.parent_id) {
       return res.status(400).json({
-        message: "Please provide a user id for your offer comment."
+        message: "Please provide a parent id for your offer comment."
       })
     } else {
       next();
