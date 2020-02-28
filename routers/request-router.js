@@ -6,7 +6,7 @@ const {
   validateParentId,
   validateRequestId,
   validateRequestPost,
-} = require('../middleware/verification');
+} = require('../middleware/verify-requests');
 
 // GET - /api/requests/parent/:id
 // get all the requests from a parent
