@@ -3,7 +3,7 @@ const Questions = require('../models/question-model');
 
 const restricted = require('../middleware/restricted');
 const {
-  validateUserId,
+  validateParentId,
   validateQuestionId,
   validateQuestionPost,
 } = require('../middleware/verify-questions');
@@ -21,17 +21,29 @@ questionRouter.get('/', restricted(), (req, res) => {
     })
 })
 
-// GET - /api/questions/user/:id
+// GET - /api/questions/parent/:id
 // Get all questions for a user
-questionRouter.get('/user/:id', restricted(), validateUserId(), (req, res) => {
-  Questions.findUser(req.params.id)
-    .first()
+questionRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
+  Questions.findParent(req.params.id)
     .then(questions => {
       res.status(200).json(questions)
     })
     .catch(err => {
       res.status(500).json({
         message: "There was an error trying to retreive the list of questions for the requested User. Please try again later."
+      })
+    })
+})
+
+// POST - /api/questions
+questionRouter.post('/', restricted(), validateQuestionPost(), (req, res) => {
+  Questions.add(req.body)
+    .then(question => {
+      res.status(201).json(question)
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: "There was an error while trying to add the question. Please try again later."
       })
     })
 })
@@ -47,19 +59,6 @@ questionRouter.put('/:id', restricted(), validateQuestionId(), validateQuestionP
     .catch(err => {
       res.status(500).json({
         message: "There was an error updating the question. Please try again later."
-      })
-    })
-})
-
-// POST - /api/questions
-questionRouter.post('/', restricted(), validateQuestionPost(), (req, res) => {
-  Questions.add(req.body)
-    .then(question => {
-      res.status(201).json(question)
-    })
-    .catch(err => {
-      res.status(500).json({
-        message: "There was an error while trying to add the question. Please try again later."
       })
     })
 })

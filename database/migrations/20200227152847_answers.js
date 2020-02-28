@@ -23,10 +23,10 @@ exports.up = async function(knex) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
 
-    answers.integer("user_id")
+    answers.integer("contractor_id")
       .notNullable()
-      .references("user_id")
-      .inTable("users")
+      .references("contractor_id")
+      .inTable("contractors")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
   })
