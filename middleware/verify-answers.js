@@ -70,9 +70,9 @@ function validateAnswerPost() {
       return res.status(400).json({
         message: "Please provide a question id for your answer to be posted."
       })
-    } else if (!req.body.user_id) {
+    } else if (!req.body.contractor_id) {
       return res.status(400).json({
-        message: "Please provide a user id for your answer to be posted."
+        message: "Please provide a contractor id for your answer to be posted."
       })
     } else {
       next();
