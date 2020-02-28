@@ -66,6 +66,8 @@ authRouter.post('/register', (req, res) => {
 authRouter.post('/login', (req, res) => {
   let { username, email, password } = req.body; // both username and email for login
 
+  // FIX THIS PART 
+  // It currently needs both username and email to login
   Auth.findBy({ username, email }) // both username and email for login
     .first()
     .then(user => {
