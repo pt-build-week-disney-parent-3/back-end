@@ -60,14 +60,6 @@ function validateParentPost() {
       return res.status(400).json({
         message: "Please provide a CPR Certification status for the parent."
       })
-    } else if (!req.body.type) {
-      return res.status(400).json({
-        message: "Please provide a type of parent for the parent."
-      })
-    } else if (!req.body.user_id) {
-      return res.status(400).json({
-        message: "Please provide a user id for the parent."
-      })
     } else {
       next();
     }

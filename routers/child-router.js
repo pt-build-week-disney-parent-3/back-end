@@ -29,6 +29,7 @@ childRouter.post('/', restricted(), validateChildPost(), (req, res) => {
       res.status(201).json(child);
     })
     .catch(err => {
+      console.error(err);
       res.status(500).json({
         message: "There was an error while creating a child. Please try again later."
       })

@@ -1,5 +1,4 @@
 exports.seed = async (knex) => {
-  await knex("users").truncate();
   await knex("parents").truncate();
   await knex("children").truncate();
   await knex("contractors").truncate();
