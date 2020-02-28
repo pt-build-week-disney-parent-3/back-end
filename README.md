@@ -19,8 +19,8 @@
 # Auth
 - POST - /api/auth/register/parent
 - POST - /api/auth/register/contractor
-- POST - /api/auth/login/parent
-- POST - /api/auth/login/contractor
+- POST - /api/auth/login/parent (username, password)
+- POST - /api/auth/login/contractor (username, password)
 
 # Requests
 - GET - /api/requests/parent/:id (Only parents can make a request, get all request from parent)
