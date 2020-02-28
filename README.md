@@ -17,8 +17,8 @@
 - PUT - /api/contractors/:id
 
 # Auth
-- POST - /api/auth/register/parent
-- POST - /api/auth/register/contractor
+- POST - /api/auth/register/parent (automatically logs in, provides token)
+- POST - /api/auth/register/contractor (automatically logs in, provides token)
 - POST - /api/auth/login/parent (username, password)
 - POST - /api/auth/login/contractor (username, password)
 
