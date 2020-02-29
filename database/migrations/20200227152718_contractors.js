@@ -33,7 +33,7 @@ exports.up = async function(knex) {
       .defaultTo(false)
 
     contractors.string("price", 128)
-    .notNullable()
+      .notNullable()
   })
 };
 

@@ -24,9 +24,14 @@ exports.up = async function(knex) {
       .onUpdate("CASCADE")
 
     reqcomments.integer("contractor_id")
-      .notNullable()
       .references("contractor_id")
       .inTable("contractors")
+      .onDelete("CASCADE")
+      .onUpdate("CASCADE")
+
+    reqcomments.integer("parent_id")
+      .references("parent_id")
+      .inTable("parents")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
   })

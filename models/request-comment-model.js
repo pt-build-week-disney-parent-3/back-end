@@ -11,10 +11,12 @@ module.exports = {
 const requestCommentData = db("request_comments")
     .join("requests", "request_comments.request_id", "requests.request_id")
     .join("contractors", "request_comments.contractor_id", "contractors.contractor_id")
+    .join("parents", "request_comments.parent_id", "parents.parent_id")
     .select(
       "request_comments.request_comment_id",
       "requests.request_id",
       "contractors.contractor_id",
+      "parents.parent_id",
       "request_comments.username",
       "request_comments.first_name",
       "request_comments.last_name",
