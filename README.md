@@ -41,111 +41,114 @@
 - DELETE - /api/offers/:id
 
 # Offer Comments
-- GET - /api/offercomments/offer/:id - (Get all offer comments for an offer)
+- GET - /api/offercomments/offer/:id - (Only parents cam post offer comments. Get all offer comments for an offer)
 - POST - /api/offercomments
 - PUT - /api/offercomments/:id
 - DELETE - /api/offercomments/:id
 
 # Parent Questions 
-- GET - /api/questions/parent/:id (Get all questions from a user) 
+- GET - /api/questions/parent/:id (Only parents can ask questions. Get all questions from a user) 
 - GET - /api/questions
 - POST - /api/questions 
 - PUT - /api/questions/:id 
 - DELETE - /api/questions/:id 
 
 # Contractor Answers
-- GET - / api/answers/question/:id (Get all answers to a question)
+- GET - / api/answers/question/:id (Only contractors can answer questions. Get all answers to a question)
 - POST - /api/answers 
 - PUT - /api/anwers/:id 
 - DELETE - /api/answers/:id 
 
-// Contractors can Answer Questions, respond to requests, make an offer. Cannot make requests or ash questions
+// Login with username and password
 
-// Parents can Ask Quesions, make and respond to requests. Cannot make offers or answer questions
+// Contractors can Answer Questions, respond to requests, make an offer. Cannot make requests or ask questions
+
+// Parents can Ask Quesions, make or answer requests. Cannot make offers or answer questions
 
 // Children can only be added to Parents
 
 # Database Information
 
 Parents
-- username
-- password
-- first_name
-- last_name
-- email
-- dob
-- phone_number
-- cpr_cert (defaultTo false)
+- username - string, required, max characters 128
+- password - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- email - string, required, max characters 128
+- dob - string, required, max characters 128
+- phone_number - string, required, max characters 10
+- cpr_cert - default = false, string, required, max characters 5
 
 Children
-- first_name
-- last_name
-- DOB
-- allergies
-- medical_conditions
-- special_instructions
-- parent_id
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- DOB - string, required, max characters 128
+- allergies - string, not required, max characters 500
+- medical_conditions - string, not required, max characters 500
+- special_instructions - string, not required, max characters 500
+- parent_id - integer, required
 
 Contractors
-- username
-- password
-- first_name
-- last_name
-- email
-- dob
-- phone_number
-- cpr_cert (defaultTo false)
-- price
+- username - string, required, max characters 128
+- password - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- email - string, required, max characters 128
+- dob - string, required, max characters 128
+- phone_number - string, required, max characters 10
+- cpr_cert - default = false, string, required, max characters 5
+- price - string, required, max characters 128
 
 Requests
-- username
-- first_name
-- last_name
-- request
-- child_count
-- location
-- time
-- parent_id
-- stroller (default is false)
-- ride
+- username - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- request - string, required, max characters 500
+- child_count - string, required, max characters 128
+- location - string, required, max characters 128
+- time - string, required, max characters 128
+- stroller - default = false, string, required, max characters 5
+- ride - string, required, max characters 128
+- parent_id - integer, required
 
 Request_Comments
-- username
-- first_name
-- last_name
-- request_comment
-- request_id
-- contractor_id
+- username - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- request_comment - string, required, max characters 500
+- request_id - integer, required
+- contractor_id - integer, not required (please choose either parent or contractor)
+- parent_id - integer, not required (please choose either parent or contractor)
 
 Offers
-- username
-- first_name
-- last_name
-- offer
-- max_child_count
-- location
-- time
-- contractor_id
+- username - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- offer - string, required, max characters 500
+- max_child_count - string, required, max characters 128
+- location - string, required, max characters 128
+- time - string, required, max characters 128
+- contractor_id - integer, required
 
 Offer_Comments
-- username
-- first_name
-- last_name
-- offer_comment
-- offer_id
-- parent_id
+- username - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- offer_comment - string, required, max characters 500
+- offer_id - integer, required
+- parent_id - integer, required
 
 Questions
-- username
-- first_name
-- last_name
-- question
-- parent_id
+- username - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- question - string, required, max characters 500
+- parent_id - integer, required
 
 Answers
-- username
-- first_name
-- last_name
-- answer
-- question_id
-- contractor_id
+- username - string, required, max characters 128
+- first_name - string, required, max characters 128
+- last_name - string, required, max characters 128
+- answer - string, required, max characters 500
+- question_id - integer, required
+- contractor_id - integer, required
