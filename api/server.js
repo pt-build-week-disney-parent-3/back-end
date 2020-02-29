@@ -36,8 +36,10 @@ server.use('/api/requests', requestRouter);
 server.use('/api/reqcomments', requestCommentRouter);
 
 // Root Endpoint
-server.get('/', (req, res) => {
-  res.send("<h2>Welcome to the Disney Parent 3 API!</h2>")
-})
+server.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Welcome to the Disney Parent 3 API!",
+  });
+});
 
 module.exports = server;
