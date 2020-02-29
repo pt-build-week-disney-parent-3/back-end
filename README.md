@@ -6,7 +6,7 @@
 - PUT - /api/parents/:id
 
 # Children
-- GET - /api/children/parent/:id (All children for selected parent)
+- GET - /api/children/parent/:id - (All children for selected parent)
 - POST - /api/children
 - PUT - /api/children/:id
 - DELETE - /api/children/:id
@@ -17,55 +17,47 @@
 - PUT - /api/contractors/:id
 
 # Auth
-- POST - /api/auth/register/parent (automatically logs in, provides token)
-- POST - /api/auth/register/contractor (automatically logs in, provides token)
-- POST - /api/auth/login/parent (username, password)
-- POST - /api/auth/login/contractor (username, password)
+- POST - /api/auth/register/parent - (automatically logs in, provides token)
+- POST - /api/auth/register/contractor - (automatically logs in, provides token)
+- POST - /api/auth/login/parent - (username, password)
+- POST - /api/auth/login/contractor - (username, password)
 
 # Requests
-- GET - /api/requests/parent/:id (Only parents can make a request, get all request from parent)
+- GET - /api/requests/parent/:id - (Only parents can make a request, get all request from parent)
 - POST /api/requests
 - PUT - /api/requests/:id
 - DELETE - /api/requests/:id
 
 # Request Comments
-- GET - /api/reqcomments/request/:id (Get all request comments for a request)
+- GET - /api/reqcomments/request/:id - (Get all request comments for a request)
 - POST - /api/reqcomments
 - PUT - /api/reqcomments/:id
 - DELETE - /api/reqcomments/:id
 
 # Offers
-- GET - /api/offers/contractor/:id (Only contractors can make an offer. Get all offers from contractor)
+- GET - /api/offers/contractor/:id - (Only contractors can make an offer. Get all offers from contractor)
 - POST - /api/offers
 - PUT - /api/offers/:id
 - DELETE - /api/offers/:id
 
 # Offer Comments
-- GET - /api/offercomments/offer/:id - (Only parents cam post offer comments. Get all offer comments for an offer)
+- GET - /api/offercomments/offer/:id - - (Only parents cam post offer comments. Get all offer comments for an offer)
 - POST - /api/offercomments
 - PUT - /api/offercomments/:id
 - DELETE - /api/offercomments/:id
 
 # Parent Questions 
-- GET - /api/questions/parent/:id (Only parents can ask questions. Get all questions from a user) 
+- GET - /api/questions/parent/:id - (Only parents can ask questions. Get all questions from a user) 
 - GET - /api/questions
 - POST - /api/questions 
 - PUT - /api/questions/:id 
 - DELETE - /api/questions/:id 
 
 # Contractor Answers
-- GET - / api/answers/question/:id (Only contractors can answer questions. Get all answers to a question)
+- GET - / api/answers/question/:id - (Only contractors can answer questions. Get all answers to a question)
 - POST - /api/answers 
 - PUT - /api/anwers/:id 
 - DELETE - /api/answers/:id 
-
-// Login with username and password
-
-// Contractors can Answer Questions, respond to requests, make an offer. Cannot make requests or ask questions
-
-// Parents can Ask Quesions, make or answer requests. Cannot make offers or answer questions
-
-// Children can only be added to Parents
 
 # Database Information
 
@@ -152,3 +144,9 @@ Answers
 - answer - string, required, max characters 500
 - question_id - integer, required
 - contractor_id - integer, required
+
+# Additional Notes
+- Login with username and password
+- Contractors can Answer Questions, respond to requests, make an offer. Cannot make requests or ask questions
+- Parents can Ask Quesions, make or answer requests. Cannot make offers or answer questions
+- Children can only be added to Parents
