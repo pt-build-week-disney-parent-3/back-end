@@ -13,22 +13,22 @@ module.exports = {
 
 function findParents() {
   return db("parents")
-    .select("*")
 }
 
 function findContractors() {
   return db("contractors")
-    .select("*")
 }
 
 function findByParentFilter(filter) {
   return db("parents")
-    .where(filter);
+    .where(filter)
+    .first();
 }
 
 function findByConstractorFilter(filter) {
   return db("contractors")
-    .where(filter);
+    .where(filter)
+    .first();
 }
 
 function findParentById(parent_id) {

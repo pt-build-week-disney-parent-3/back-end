@@ -15,36 +15,6 @@ function generateToken(user) {
   })
 }
 
-// GET - /api/auth/parents
-// TESTING PURPOSES ONLY
-// NOT USED IN PRODUCTION
-authRouter.get('/parents', restricted(), (req, res) => {
-  Auth.findParents()
-    .then(parents => {
-      res.status(200).json(parents);
-    })
-    .catch(err => {
-      res.status(500).json({
-        message: "Cannot retrieve Parents. Please try again later."
-      })
-    })
-}) 
-
-// GET - /api/auth/contractors
-// TESTING PURPOSES ONLY
-// NOT USED IN PRODUCTION
-authRouter.get('/contractors', restricted(), (req, res) => {
-  Auth.findContractors()
-    .then(contractors => {
-      res.status(200).json(contractors);
-    })
-    .catch(err => {
-      res.status(500).json({
-        message: "Cannot retrieve Contractors. Please try again later."
-      })
-    })
-})
-
 // POST - /api/auth/register/parent
 authRouter.post('/register/parent', (req, res) => {
   let hash = bcrypt.hashSync(req.body.password, 10);
@@ -112,19 +82,16 @@ authRouter.post('/register/contractor', (req, res) => {
 
 // POST - /api/auth/login/parent
 authRouter.post('/login/parent', (req, res) => {
-  let { username, password } = req.body; // both username and email for login
+  let { username, password } = req.body;
 
-  // FIX THIS PART 
-  // It currently needs both username and email to login
-  Auth.findByParentFilter({ username }) // both username and email for login
-    .first()
+  Auth.findByParentFilter({ username }) 
     .then(parent => {
       if (parent && bcrypt.compareSync(password, parent.password)) {
         const token = generateToken(parent);
 
         res.status(200).json({
           message: `Welcome ${parent.first_name}!`,
-          authToken: token, // remove before hosting
+          authToken: token,
         })
       } else {
         res.status(400).json({
@@ -142,11 +109,9 @@ authRouter.post('/login/parent', (req, res) => {
 
 // POST - /api/auth/login/contractor
 authRouter.post('/login/contractor', (req, res) => {
-  let { username, password } = req.body; // both username and email for login
+  let { username, password } = req.body;
 
-  // FIX THIS PART 
-  // It currently needs both username and email to login
-  Auth.findByConstractorFilter({ username }) // both username and email for login
+  Auth.findByConstractorFilter({ username })
     .first()
     .then(contractor => {
       if (contractor && bcrypt.compareSync(password, contractor.password)) {
@@ -154,7 +119,7 @@ authRouter.post('/login/contractor', (req, res) => {
 
         res.status(200).json({
           message: `Welcome ${contractor.first_name}!`,
-          authToken: token, // remove before hosting
+          authToken: token,
         })
       } else {
         res.status(400).json({
