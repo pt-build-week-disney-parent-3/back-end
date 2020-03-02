@@ -29,7 +29,8 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.4",
     "nodemon": "^2.0.2",
-    "sqlite3": "^4.1.1"
+    "sqlite3": "^4.1.1",
+    "postgresql": "^0.0.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.0",
