@@ -16,10 +16,10 @@ exports.up = async function(knex) {
     questions.string("question", 500)
       .notNullable()
 
-    questions.integer("user_id")
+    questions.integer("parent_id")
       .notNullable()
-      .references("user_id")
-      .inTable("users")
+      .references("parent_id")
+      .inTable("parents")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
   })

@@ -8,7 +8,7 @@ module.exports = {
 
 function find() {
   return db("contractors")
-    .select('*');
+    .select("*");
 }
 
 function findById(contractor_id) {

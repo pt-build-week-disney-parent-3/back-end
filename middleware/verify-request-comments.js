@@ -70,10 +70,8 @@ function validateRequestCommentPost() {
       return res.status(400).json({
         message: "Please provide a request id for your request comment."
       })
-    } else if (!req.body.user_id) {
-      return res.status(400).json({
-        message: "Please provide a user id for your request comment."
-      })
+    } else if (req.body.contractor_id || req.body.parent_id) {
+      next();
     } else {
       next();
     }

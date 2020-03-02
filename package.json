@@ -15,7 +15,7 @@
   "keywords": [],
   "author": "Tiffany Simionescu",
   "license": "ISC",
-  "homepage": "https://github.com/pt-build-week-disney-parent-3/back-end",
+  "homepage": "https://disney-parent-3.herokuapp.com/",
   
   "dependencies": {
     "bcryptjs": "^2.4.3",

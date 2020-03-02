@@ -3,27 +3,36 @@ const db = require('../database/dbConfig');
 module.exports = {
   find,
   findById,
-  findUser,
+  findParent,
   add,
   update,
   remove
 }
 
+const questionData = db("questions")
+    .join("parents", "questions.parent_id", "parents.parent_id")
+    .select(
+      "parents.parent_id",
+      "questions.question_id",
+      "questions.username",
+      "questions.first_name",
+      "questions.last_name",
+      "questions.question"
+    )
+
 function find() {
   return db("questions")
-    .select('*');
+    .select("*")
 }
 
 function findById(question_id) {
-  return db("questions")
+  return db(questionData)
     .where({ question_id })
-    .first();
 }
 
-function findUser(user_id) {
+function findParent(parent_id) {
   return db("questions")
-    .where({ user_id })
-    .first()
+    .where({ parent_id })
 }
 
 async function add(question) {

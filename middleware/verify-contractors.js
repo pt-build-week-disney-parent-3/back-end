@@ -60,17 +60,9 @@ function validateContractorPost() {
       return res.status(400).json({
         message: "Please provide a CPR Certification status for your contractor."
       })
-    } else if (!req.body.type) {
-      return res.status(400).json({
-        message: "Please provide the type, contractor for your contractor."
-      })
     } else if (!req.body.price) {
       return res.status(400).json({
         message: "Please provide a price for your contractor."
-      })
-    } else if (!req.body.user_id) {
-      return res.status(400).json({
-        message: "Please provide a user id for your contractor."
       })
     } else {
       next();

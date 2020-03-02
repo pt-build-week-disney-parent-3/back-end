@@ -8,7 +8,7 @@ exports.seed = function(knex) {
       max_child_count: "3",
       location: "Magic Kingdom",
       time: "12:00 pm",
-      user_id: 2
+      contractor_id: 1
     }
   ])
 }

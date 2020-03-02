@@ -1,30 +1,56 @@
 const db = require('../database/dbConfig');
 
 module.exports = {
-  find, 
-  findBy, 
-  findById,
-  add
+  findParents,
+  findContractors, 
+  findByParentFilter,
+  findByConstractorFilter, 
+  findParentById,
+  findContractorById,
+  addParent,
+  addContractor
 }
 
-function find() {
-  return db("users")
-    .select("*")
+function findParents() {
+  return db("parents")
 }
 
-function findBy(filter) {
-  return db("users")
-    .where(filter);
+function findContractors() {
+  return db("contractors")
 }
 
-function findById(user_id) {
-  return db("users")
-    .where({ user_id })
+function findByParentFilter(filter) {
+  return db("parents")
+    .where(filter)
     .first();
 }
 
-async function add(user) {
-  const [user_id] = await db("users").insert(user);
+function findByConstractorFilter(filter) {
+  return db("contractors")
+    .where(filter)
+    .first();
+}
 
-  return findById(user_id);
+function findParentById(parent_id) {
+  return db("parents")
+    .where({ parent_id })
+    .first();
+}
+
+function findContractorById(contractor_id) {
+  return db("contractors")
+    .where({ contractor_id })
+    .first();
+}
+
+async function addParent(parent) {
+  const [parent_id] = await db("parents").insert(parent);
+
+  return findParentById(parent_id);
+}
+
+async function addContractor(contractor) {
+  const [contractor_id] = await db("contractors").insert(contractor);
+
+  return findContractorById(contractor_id);
 }

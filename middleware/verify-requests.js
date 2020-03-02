@@ -88,6 +88,8 @@ function validateRequestPost() {
       return res.status(400).json({
         message: "Please provide a designated ride for your request."
       })
+    } else {
+      next();
     }
   }
 }

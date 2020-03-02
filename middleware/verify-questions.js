@@ -1,27 +1,27 @@
 const Questions = require('../models/question-model');
 
 module.exports = {
-  validateUserId,
+  validateParentId,
   validateQuestionId,
   validateQuestionPost
 }
 
-function validateUserId() {
+function validateParentId() {
   return (req, res, next) => {
-    Questions.findUser(req.params.id)
-      .then(user => {
-        if (user) {
-          req.user = user;
+    Questions.findParent(req.params.id)
+      .then(parent => {
+        if (parent) {
+          req.parent = parent;
           next();
         } else {
           res.status(400).json({
-            message: "Invalid User Id."
+            message: "Invalid Parent Id."
           })
         }
       })
       .catch(err => {
         res.status(500).json({
-          message: "There was an error while trying to find the user. Please try again later."
+          message: "There was an error while trying to find the parent. Please try again later."
         })
       })
   }
@@ -66,9 +66,9 @@ function validateQuestionPost() {
       return res.status(400).json({
         message: "Please provide a question for your question."
       })
-    } else if (!req.body.user_id) {
+    } else if (!req.body.parent_id) {
       return res.status(400).json({
-        message: "Please provide a user id for your question."
+        message: "Please provide a parent id for your question."
       })
     } else {
       next();

@@ -5,7 +5,7 @@ exports.seed = function(knex) {
       first_name: "Tiffany",
       last_name: "Simionescu",
       question: "How much does it cost for a parent to watch my child?",
-      user_id: 1
+      parent_id: 1
     }
   ])
 }

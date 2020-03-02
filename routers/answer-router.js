@@ -35,6 +35,19 @@ answerRouter.get('/:id', restricted(), validateAnswerId(), (req, res) => {
     })
 })
 
+// POST - /api/answers
+answerRouter.post('/', restricted(), validateAnswerPost(), (req, res) => {
+  Answers.add(req.body)
+    .then(answer => {
+      res.status(201).json(answer)
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: "There was an error trying to add the answer. Please try again later."
+      })
+    })
+})
+
 // PUT - /api/answers/:id
 answerRouter.put('/:id', restricted(), validateAnswerId(), validateAnswerPost(), (req, res) => {
   const changes = req.body;
@@ -46,19 +59,6 @@ answerRouter.put('/:id', restricted(), validateAnswerId(), validateAnswerPost(),
     .catch(err => {
       res.status(500).json({
         message: "There was an error trying to update the requested answer. Please try again later."
-      })
-    })
-})
-
-// POST - /api/answers
-answerRouter.post('/', restricted(), validateAnswerPost(), (req, res) => {
-  Answers.add(req.body)
-    .then(answer => {
-      res.status(201).json(answer)
-    })
-    .catch(err => {
-      res.status(500).json({
-        message: "There was an error trying to add the answer. Please try again later."
       })
     })
 })

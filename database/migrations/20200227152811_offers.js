@@ -25,10 +25,10 @@ exports.up = async function(knex) {
     offers.string("time", 128)
       .notNullable()
 
-    offers.integer("user_id")
+    offers.integer("contractor_id")
       .notNullable()
-      .references("user_id")
-      .inTable("users")
+      .references("contractor_id")
+      .inTable("contractors")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")
   })

@@ -8,7 +8,7 @@ module.exports = {
 
 function find() {
   return db("parents")
-    .select('*');
+    .select("*")
 }
 
 function findById(parent_id) {

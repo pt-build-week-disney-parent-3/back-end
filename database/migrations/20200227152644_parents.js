@@ -4,12 +4,33 @@ exports.up = async function(knex) {
 
     parents.increments("parent_id")
 
-    parents.integer("user_id")
+    parents.string("username", 128)
       .notNullable()
-      .references("user_id")
-      .inTable("users")
-      .onDelete("CASCADE")
-      .onUpdate("CASCADE")
+      .unique()
+
+    parents.string("password", 128)
+      .notNullable()
+
+    parents.string("first_name", 128)
+      .notNullable()
+
+    parents.string("last_name", 128)
+      .notNullable()
+
+    parents.string("email", 128)
+      .notNullable()
+      .unique()
+
+    parents.string("dob", 128)
+      .notNullable()
+
+    parents.string("phone_number", 10)
+      .notNullable()
+      .unique()
+
+    parents.string("cpr_cert", 5)
+      .notNullable()
+      .defaultTo(false)
   })
 };
 

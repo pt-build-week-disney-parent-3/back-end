@@ -8,8 +8,21 @@ module.exports = {
   remove
 }
 
+const childData = db("children")
+    .join("parents", "children.parent_id", "parents.parent_id")
+    .select(
+      "parents.parent_id",
+      "children.child_id",
+      "children.first_name",
+      "children.last_name",
+      "children.dob",
+      "children.allergies",
+      "children.medical_conditions",
+      "children.special_instructions",
+    )
+
 function findById(child_id) {
-  return db("children")
+  return db(childData)
     .where({ child_id })
     .first()
 }
@@ -17,7 +30,6 @@ function findById(child_id) {
 function findParent(parent_id) {
   return db("children")
     .where({ parent_id })
-    .first();
 }
 
 async function add(child) {

@@ -8,16 +8,27 @@ module.exports = {
   remove
 }
 
+const answerData = db("answers")
+    .join("questions", "answers.question_id", "questions.question_id")
+    .join("contractors", "answers.contractor_id", "contractors.contractor_id")
+    .select(
+      "answers.answer_id",
+      "questions.question_id",
+      "contractors.contractor_id",
+      "answers.username",
+      "answers.first_name",
+      "answers.last_name",
+      "answers.answer",
+    )
+
 function findQuestion(question_id) {
-  return db("answers")
+  return db(answerData)
     .where({ question_id })
-    .first()
 }
 
 function findById(answer_id) {
   return db("answers")
     .where({ answer_id })
-    .first()
 }
 
 function update(answer_id, changes) {
