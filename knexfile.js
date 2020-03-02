@@ -130,9 +130,11 @@ module.exports = {
   production: {
     ...sqlite,
     connection: {
-      database: process.env.DB_URL || "https://disney-parent-3.herokuapp.com/",
-      user: process.env.DB_USER,
-      password: process.env.DB_PASSWORD
+      // database: "https://disney-parent-3.herokuapp.com/",
+      // user: process.env.DB_USER,
+      // password: process.env.DB_PASSWORD
+      // filename: "https://disney-parent-3.herokuapp.com/"
+      filename: "./database/production.db3"
     }
   },
 }

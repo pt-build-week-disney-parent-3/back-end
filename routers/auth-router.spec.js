@@ -28,7 +28,7 @@ beforeAll((done) => {
       cpr_cert: false
     })
     .end((err, res) => {
-      token = res.body.authorization;
+      token = res.body.token;
       done();
     })
 })
