@@ -1,0 +1,20 @@
+const supertest = require('supertest');
+const router = require('./offer-comment-router');
+const server = require('../api/server');
+const db = require('../database/dbConfig');
+
+beforeEach(async () => {
+  await db.seed.run();
+})
+
+afterAll(async () => {
+  await db.destroy();
+});
+
+// GET - /api/offercomments/offer/:id 
+test("get all offer comments for an offer", async () => {
+  const res = await supertest(server.use(router))
+    .get("/api/offercomments/offer/1")
+  expect(res.status).toBe(400)
+  expect(res.type).toBe("application/json")
+})
