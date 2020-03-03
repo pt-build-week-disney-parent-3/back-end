@@ -5,10 +5,6 @@ beforeEach(async () => {
   await db.seed.run();
 })
 
-// afterAll(async () => {
-//   await db.destroy();
-// });
-
 describe("answer-model", () => {
 
   test("findQuestion", async () => {
