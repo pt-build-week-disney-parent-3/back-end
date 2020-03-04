@@ -14,7 +14,7 @@ function validateQuestionId() {
           req.question = question;
           next();
         } else {
-          res.status(400).json({
+          res.status(403).json({
             message: "Invalid Question Id."
           })
         }
@@ -35,7 +35,7 @@ function validateAnswerId() {
           req.answer = answer;
           next();
         } else {
-          res.status(400).json({
+          res.status(403).json({
             message: "Invalid Answer Id."
           })
         }
