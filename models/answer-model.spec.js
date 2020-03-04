@@ -20,7 +20,6 @@ describe("answer-model", () => {
   test("update", async () => {
     await model.update(1, { username: "tiffany100" })
     const answers = await model.findById(1)
-    // won't go through because restricted
     expect(answers.username).toBe(undefined);
   })
 

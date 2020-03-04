@@ -20,7 +20,6 @@ describe("request-comment-model", () => {
   test("update", async () => {
     await model.update(1, { username: "tiffany100" })
     const requestComment = await model.findById(1)
-    // won't go through because restricted
     expect(requestComment.username).toBe(undefined);
   })
 
