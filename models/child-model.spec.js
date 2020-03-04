@@ -20,7 +20,6 @@ describe("child-model", () => {
   test("update", async () => {
     await model.update(1, { first_name: "Mirielle" })
     const child = await model.findById(1)
-    // won't go through because didn't update the whole object
     expect(child).toBe(undefined);
   })
 
