@@ -1,6 +1,9 @@
 const childRouter = require('express').Router();
 const Children = require('../models/child-model');
-const restricted = require('../middleware/restricted');
+
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateParentId,
   validateChildPost,
