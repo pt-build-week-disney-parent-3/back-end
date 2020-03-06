@@ -17,10 +17,10 @@
 - PUT - /api/contractors/:id
 
 # Auth
-- POST - /api/auth/register/parent - (automatically logs in, provides token)
-- POST - /api/auth/register/contractor - (automatically logs in, provides token)
-- POST - /api/auth/login/parent - (username, password)
-- POST - /api/auth/login/contractor - (username, password)
+- POST - /api/auth/register/parent - (does not provide token)
+- POST - /api/auth/register/contractor - (does not provide token)
+- POST - /api/auth/login/parent - (username, password - will provide token)
+- POST - /api/auth/login/contractor - (username, password - will provide token)
 
 # Requests
 - GET - /api/requests/parent/:id - (Only parents can make a request, get all request from parent)
@@ -67,14 +67,14 @@ Parents
 - first_name - string, required, max characters 128
 - last_name - string, required, max characters 128
 - email - string, required, max characters 128
-- dob - string, required, max characters 128
-- phone_number - string, required, max characters 10
+- dob - date, YYYYMMDD
+- phone_number - integer, cannot start with 0
 - cpr_cert - default = false, string, required, max characters 5
 
 Children
 - first_name - string, required, max characters 128
 - last_name - string, required, max characters 128
-- DOB - string, required, max characters 128
+- DOB - date, YYYYMMDD
 - allergies - string, not required, max characters 500
 - medical_conditions - string, not required, max characters 500
 - special_instructions - string, not required, max characters 500
@@ -86,17 +86,17 @@ Contractors
 - first_name - string, required, max characters 128
 - last_name - string, required, max characters 128
 - email - string, required, max characters 128
-- dob - string, required, max characters 128
-- phone_number - string, required, max characters 10
+- dob - date, YYYYMMDD
+- phone_number - integer, cannot start with 0
 - cpr_cert - default = false, string, required, max characters 5
-- price - string, required, max characters 128
+- price - float
 
 Requests
 - username - string, required, max characters 128
 - first_name - string, required, max characters 128
 - last_name - string, required, max characters 128
 - request - string, required, max characters 500
-- child_count - string, required, max characters 128
+- child_count - integer, required
 - location - string, required, max characters 128
 - time - string, required, max characters 128
 - stroller - default = false, string, required, max characters 5
@@ -117,7 +117,7 @@ Offers
 - first_name - string, required, max characters 128
 - last_name - string, required, max characters 128
 - offer - string, required, max characters 500
-- max_child_count - string, required, max characters 128
+- max_child_count - integer, required
 - location - string, required, max characters 128
 - time - string, required, max characters 128
 - contractor_id - integer, required
