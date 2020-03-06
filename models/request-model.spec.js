@@ -1,15 +1,11 @@
 const model = require('./request-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db("requests").truncate();
-})
-
 describe("request-model", () => {
 
   test("findParent", async () => {
     const res = await model.findParent(1);
-    expect(res.length).toBe(0);
+    expect(res.length).toBe(1);
   })
 
   test("findById", async () => {

@@ -1,7 +1,9 @@
 const answerRouter = require('express').Router();
 const Answers = require('../models/answer-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateQuestionId,
   validateAnswerId,
@@ -10,7 +12,7 @@ const {
 
 // GET - /api/answers/question/:id
 // get all answers to a question
-answerRouter.get('/question/:id', restricted(), validateQuestionId(), (req, res) => {
+answerRouter.get('/question/:id', validateQuestionId(), (req, res) => {
   Answers.findQuestion(req.params.id)
     .then(answers => {
       res.status(200).json(answers);
@@ -23,7 +25,7 @@ answerRouter.get('/question/:id', restricted(), validateQuestionId(), (req, res)
 })
 
 // GET - /api/answers/:id
-answerRouter.get('/:id', restricted(), validateAnswerId(), (req, res) => {
+answerRouter.get('/:id', validateAnswerId(), (req, res) => {
   Answers.findById(req.params.id)
     .then(answer => {
       res.status(200).json(answer)
@@ -36,7 +38,7 @@ answerRouter.get('/:id', restricted(), validateAnswerId(), (req, res) => {
 })
 
 // POST - /api/answers
-answerRouter.post('/', restricted(), validateAnswerPost(), (req, res) => {
+answerRouter.post('/', validateAnswerPost(), (req, res) => {
   Answers.add(req.body)
     .then(answer => {
       res.status(201).json(answer)
@@ -49,7 +51,7 @@ answerRouter.post('/', restricted(), validateAnswerPost(), (req, res) => {
 })
 
 // PUT - /api/answers/:id
-answerRouter.put('/:id', restricted(), validateAnswerId(), validateAnswerPost(), (req, res) => {
+answerRouter.put('/:id', validateAnswerId(), validateAnswerPost(), (req, res) => {
   const changes = req.body;
 
   Answers.update(req.params.id, changes)
@@ -64,7 +66,7 @@ answerRouter.put('/:id', restricted(), validateAnswerId(), validateAnswerPost(),
 })
 
 // DELETE - /api/answers/:id
-answerRouter.delete('/:id', restricted(), validateAnswerId(), (req, res) => {
+answerRouter.delete('/:id', validateAnswerId(), (req, res) => {
   Answers.remove(req.params.id)
     .then(() => {
       res.status(200).json({

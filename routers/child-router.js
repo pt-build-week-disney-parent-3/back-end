@@ -1,6 +1,9 @@
 const childRouter = require('express').Router();
 const Children = require('../models/child-model');
-const restricted = require('../middleware/restricted');
+
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateParentId,
   validateChildPost,
@@ -9,7 +12,7 @@ const {
 
 // GET - /api/children/parent/:id 
 // Get all children for parent
-childRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
+childRouter.get('/parent/:id', validateParentId(), (req, res) => {
   Children.findParent(req.params.id)
     .then(children => {
       res.status(200).json(children);
@@ -23,7 +26,7 @@ childRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
 })
 
 // POST - /api/children
-childRouter.post('/', restricted(), validateChildPost(), (req, res) => {
+childRouter.post('/', validateChildPost(), (req, res) => {
   Children.add(req.body)
     .then(child => {
       res.status(201).json(child);
@@ -37,7 +40,7 @@ childRouter.post('/', restricted(), validateChildPost(), (req, res) => {
 })
 
 // PUT - /api/children/:id
-childRouter.put('/:id', restricted(), validateChildId(), validateChildPost(), (req, res) => {
+childRouter.put('/:id', validateChildId(), validateChildPost(), (req, res) => {
   const changes = req.body;
 
   Children.update(req.params.id, changes)
@@ -52,7 +55,7 @@ childRouter.put('/:id', restricted(), validateChildId(), validateChildPost(), (r
 })
 
 // DELETE - /api/children/:id
-childRouter.delete('/:id', restricted(), validateChildId(), (req, res) => {
+childRouter.delete('/:id', validateChildId(), (req, res) => {
   Children.remove(req.params.id)
     .then(() => {
       res.status(200).json({

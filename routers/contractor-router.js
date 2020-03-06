@@ -1,14 +1,16 @@
 const contractorRouter = require('express').Router();
 const Contractors = require('../models/contractor-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateContractorId,
   validateContractorPost,
 } = require('../middleware/verify-contractors');
 
 // GET - /api/contractors
-contractorRouter.get('/', restricted(), (req, res) => {
+contractorRouter.get('/', (req, res) => {
   Contractors.find()
     .then(contractors => {
       res.status(200).json(contractors);
@@ -21,7 +23,7 @@ contractorRouter.get('/', restricted(), (req, res) => {
 })
 
 // GET - /api/contractors/:id
-contractorRouter.get('/:id', restricted(), validateContractorId(), (req, res) => {
+contractorRouter.get('/:id', validateContractorId(), (req, res) => {
   Contractors.findById(req.params.id)
     .then(contractor => {
       res.status(200).json(contractor);
@@ -34,7 +36,7 @@ contractorRouter.get('/:id', restricted(), validateContractorId(), (req, res) =>
 })
 
 // PUT - /api/contractors/:id
-contractorRouter.put('/:id', restricted(), validateContractorId(), validateContractorPost(), (req, res) => {
+contractorRouter.put('/:id', validateContractorId(), validateContractorPost(), (req, res) => {
   const changes = req.body;
 
   Contractors.update(req.params.id, changes)

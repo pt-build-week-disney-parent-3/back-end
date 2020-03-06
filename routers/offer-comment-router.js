@@ -1,7 +1,9 @@
 const offerCommentRouter = require('express').Router();
 const OfferComments = require('../models/offer-comment-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateOfferId,
   validateOfferCommentId,
@@ -10,7 +12,7 @@ const {
 
 // GET - /api/offercomments/offer/:id 
 // Get all offer comments
-offerCommentRouter.get('/offer/:id', restricted(), validateOfferId(), (req, res) => {
+offerCommentRouter.get('/offer/:id', validateOfferId(), (req, res) => {
   OfferComments.findOffer(req.params.id)
     .then(offerComments => {
       res.status(200).json(offerComments)
@@ -23,7 +25,7 @@ offerCommentRouter.get('/offer/:id', restricted(), validateOfferId(), (req, res)
 })
 
 // POST - /api/offercomments
-offerCommentRouter.post('/', restricted(), validateOfferCommentPost(), (req, res) => {
+offerCommentRouter.post('/', validateOfferCommentPost(), (req, res) => {
   OfferComments.add(req.body)
     .then(offerComment => {
       res.status(201).json(offerComment)
@@ -36,7 +38,7 @@ offerCommentRouter.post('/', restricted(), validateOfferCommentPost(), (req, res
 })
 
 // PUT - /api/offercomments/:id
-offerCommentRouter.put('/:id', restricted(), validateOfferCommentId(), validateOfferCommentPost(), (req, res) => {
+offerCommentRouter.put('/:id', validateOfferCommentId(), validateOfferCommentPost(), (req, res) => {
   const changes = req.body;
 
   OfferComments.update(req.params.id, changes)
@@ -51,7 +53,7 @@ offerCommentRouter.put('/:id', restricted(), validateOfferCommentId(), validateO
 })
 
 // DELETE - /api/offercomments/:id
-offerCommentRouter.delete('/:id', restricted(), validateOfferCommentId(), (req, res) => {
+offerCommentRouter.delete('/:id', validateOfferCommentId(), (req, res) => {
   OfferComments.remove(req.params.id)
     .then(() => {
       res.status(200).json({

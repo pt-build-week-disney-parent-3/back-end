@@ -1,7 +1,9 @@
 const questionRouter = require('express').Router();
 const Questions = require('../models/question-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateParentId,
   validateQuestionId,
@@ -9,7 +11,7 @@ const {
 } = require('../middleware/verify-questions');
 
 // GET - /api/questions
-questionRouter.get('/', restricted(), (req, res) => {
+questionRouter.get('/', (req, res) => {
   Questions.find()
     .then(questions => {
       res.status(200).json(questions)
@@ -23,7 +25,7 @@ questionRouter.get('/', restricted(), (req, res) => {
 
 // GET - /api/questions/parent/:id
 // Get all questions for a user
-questionRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
+questionRouter.get('/parent/:id', validateParentId(), (req, res) => {
   Questions.findParent(req.params.id)
     .then(questions => {
       res.status(200).json(questions)
@@ -36,7 +38,7 @@ questionRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) =
 })
 
 // POST - /api/questions
-questionRouter.post('/', restricted(), validateQuestionPost(), (req, res) => {
+questionRouter.post('/', validateQuestionPost(), (req, res) => {
   Questions.add(req.body)
     .then(question => {
       res.status(201).json(question)
@@ -49,7 +51,7 @@ questionRouter.post('/', restricted(), validateQuestionPost(), (req, res) => {
 })
 
 // PUT - /api/questions/:id
-questionRouter.put('/:id', restricted(), validateQuestionId(), validateQuestionPost(), (req, res) => {
+questionRouter.put('/:id', validateQuestionId(), validateQuestionPost(), (req, res) => {
   const changes = req.body;
 
   Questions.update(req.params.id, changes)
@@ -64,7 +66,7 @@ questionRouter.put('/:id', restricted(), validateQuestionId(), validateQuestionP
 })
 
 // DELETE - /api/question/:id
-questionRouter.delete('/:id', restricted(), validateQuestionId(), (req, res) => {
+questionRouter.delete('/:id', validateQuestionId(), (req, res) => {
   Questions.remove(req.params.id)
     .then(() => {
       res.status(200).json({

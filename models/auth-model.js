@@ -44,13 +44,13 @@ function findContractorById(contractor_id) {
 }
 
 async function addParent(parent) {
-  const [parent_id] = await db("parents").insert(parent);
+  const [parent_id] = await db("parents").insert(parent, "parent_id");
 
   return findParentById(parent_id);
 }
 
 async function addContractor(contractor) {
-  const [contractor_id] = await db("contractors").insert(contractor);
+  const [contractor_id] = await db("contractors").insert(contractor, "contractor_id");
 
   return findContractorById(contractor_id);
 }

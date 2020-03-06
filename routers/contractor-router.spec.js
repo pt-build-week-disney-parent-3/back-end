@@ -1,28 +1,38 @@
 const supertest = require('supertest');
 const router = require('./contractor-router');
 const server = require('../api/server');
-const db = require('../database/dbConfig');
-
-beforeEach(async () => {
-  await db.seed.run();
-})
-
-afterAll(async () => {
-  await db.destroy();
-});
 
 // GET - /api/contractors
 test("get all contractors", async () => {
   const res = await supertest(server.use(router))
-    .get("/api/contractors")
-  expect(res.status).toBe(400)
+    .get("/")
+  expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
 })
 
 // GET - /api/contractors/:id
 test("get a single contractor", async () => {
   const res = await supertest(server.use(router))
-    .get("/api/contractor/1")
-  expect(res.status).toBe(404)
-  expect(res.type).toBe("text/html")
+    .get("/1")
+  expect(res.status).toBe(200)
+  expect(res.type).toBe("application/json")
+})
+
+// PUT - /api/contractors/:id
+test("update contractor", async () => {
+  const res = await supertest(server.use(router))
+    .put("/1")
+    .send({
+      username: "tiffany88",
+      password: "123456",
+      first_name: "Tiffany",
+      last_name: "NewLastName",
+      email: "e@r.com",
+      dob: "September",
+      phone_number: "0099332211",
+      cpr_cert: true,
+      price: "$20.00"
+    })
+  expect(res.status).toBe(201)
+  expect(res.type).toBe("application/json")
 })
