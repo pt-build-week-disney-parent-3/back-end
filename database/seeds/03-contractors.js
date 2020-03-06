@@ -6,10 +6,10 @@ exports.seed = function(knex) {
       first_name: "Tiffany",
       last_name: "Lynn",
       email: "lynn@email.com",
-      dob: "Sept. 25th, 1987",
-      phone_number: "0000000001",
+      dob: 19870925,
+      phone_number: 3000000001,
       cpr_cert: true,
-      price: "$20.00 per hour"
+      price: 20.00
     }
   ])
 }

@@ -3,7 +3,7 @@ exports.seed = function(knex) {
     {
       first_name: "Dougie",
       last_name: "Simionescu",
-      dob: "May 31st, 2013",
+      dob: 20130531,
       allergies: "none",
       medical_conditions: "none",
       special_instructions: "none",
