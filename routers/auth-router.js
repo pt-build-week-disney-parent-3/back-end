@@ -16,26 +16,14 @@ function generateToken(user) {
 
 // POST - /api/auth/register/parent
 authRouter.post('/register/parent', (req, res) => {
-  let hash = bcrypt.hashSync(req.body.password, 10);
-
-  const parent = {
-    username: req.body.username,
-    password: hash,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    dob: req.body.dob,
-    phone_number: req.body.phone_number,
-    cpr_cert: req.body.cpr_cert
-  }
+  let parent = req.body;
+  let hash = bcrypt.hashSync(parent.password, 10);
+  parent.password = hash;
 
   Auth.addParent(parent)
     .then(saved => {
-      const token = generateToken(saved);
-
       res.status(201).json({
-        message: `Welcome ${saved.first_name}!`,
-        authToken: token,
+        message: `Welcome ${saved.first_name}!`
       })
     })
     .catch(err => {
@@ -48,27 +36,14 @@ authRouter.post('/register/parent', (req, res) => {
 
 // POST - /api/auth/register/contractor
 authRouter.post('/register/contractor', (req, res) => {
-  let hash = bcrypt.hashSync(req.body.password, 10);
-
-  const contractor = {
-    username: req.body.username,
-    password: hash,
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    dob: req.body.dob,
-    phone_number: req.body.phone_number,
-    cpr_cert: req.body.cpr_cert,
-    price: req.body.price
-  }
+  let contractor = req.body;
+  let hash = bcrypt.hashSync(contractor.password, 10);
+  contractor.password = hash;
 
   Auth.addContractor(contractor)
     .then(saved => {
-      const token = generateToken(saved);
-
       res.status(201).json({
-        message: `Welcome ${saved.first_name}!`,
-        authToken: token,
+        message: `Welcome ${saved.first_name}!`
       })
     })
     .catch(err => {

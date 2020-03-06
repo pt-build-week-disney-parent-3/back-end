@@ -10,7 +10,7 @@ exports.up = async function(knex) {
     children.string("last_name", 128)
       .notNullable()
 
-    children.string("dob", 128)
+    children.date("dob")
       .notNullable()
 
     children.string("allergies", 500)

@@ -28,8 +28,8 @@ test("update a parent", async () => {
       first_name: "Tiffany",
       last_name: "Simionescu",
       email: "lynnts@gmail.com",
-      dob: "September",
-      phone_number: "8675309",
+      dob: 19870925,
+      phone_number: 8675309,
       cpr_cert: true
     })
   expect(res.status).toBe(201)

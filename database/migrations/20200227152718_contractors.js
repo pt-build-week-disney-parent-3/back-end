@@ -21,10 +21,10 @@ exports.up = async function(knex) {
       .notNullable()
       .unique()
 
-    contractors.string("dob", 128)
+    contractors.date("dob")
       .notNullable()
 
-    contractors.string("phone_number", 10)
+    contractors.integer("phone_number")
       .notNullable()
       .unique()
 
@@ -32,7 +32,7 @@ exports.up = async function(knex) {
       .notNullable()
       .defaultTo(false)
 
-    contractors.string("price", 128)
+    contractors.float("price")
       .notNullable()
   })
 };

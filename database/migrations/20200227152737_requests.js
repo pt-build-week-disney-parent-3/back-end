@@ -16,7 +16,7 @@ exports.up = async function(knex) {
     requests.string("request", 500)
       .notNullable()
 
-    requests.string("child_count", 128)
+    requests.integer("child_count")
       .notNullable()
 
     requests.string("location", 128)

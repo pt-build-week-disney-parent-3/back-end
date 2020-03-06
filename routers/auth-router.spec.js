@@ -15,7 +15,7 @@ describe("Auth Router Test - Parent login", () => {
           token = res.body.token,
           done();
         })
-    })
+    }) 
   })
 })
 

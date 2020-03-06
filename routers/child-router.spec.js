@@ -8,7 +8,7 @@ test("get all children from a parent", async () => {
     .get("/parent/1")
   expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
-})
+}) 
 
 // POST - /api/children
 test("add child", async () => {
@@ -17,7 +17,7 @@ test("add child", async () => {
     .send({
       first_name: "Sophie",
       last_name: "Simionescu",
-      dob: "July",
+      dob: 20160730,
       allergies: "none",
       medical_conditions: "none",
       special_instructions: "none",
@@ -34,7 +34,7 @@ test("update child", async () => {
     .send({
       first_name: "Sophie",
       last_name: "Simionescu",
-      dob: "July",
+      dob: 20160730,
       allergies: "Updated Allergies",
       medical_conditions: "none",
       special_instructions: "none",

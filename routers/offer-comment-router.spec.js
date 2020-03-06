@@ -40,7 +40,7 @@ test("update an offer", async () => {
     })
   expect(res.status).toBe(201)
   expect(res.type).toBe("application/json")
-})
+}) 
 
 // DELETE - /api/offercomments/:id
 test("remove an offer", async () => {

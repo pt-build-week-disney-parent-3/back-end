@@ -6,8 +6,8 @@ exports.seed = function(knex) {
       first_name: "Tiffany",
       last_name: "Simionescu",
       email: "tiffany@email.com",
-      dob: "Sept. 25th, 1987",
-      phone_number: "0000000000",
+      dob: 19870925,
+      phone_number: 3000000000,
       cpr_cert: true,
     }
   ])

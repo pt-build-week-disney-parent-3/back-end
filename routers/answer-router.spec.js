@@ -55,4 +55,4 @@ test("remove answer", async () => {
     .delete("/2")
   expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
-})
+}) 
