@@ -8,7 +8,7 @@ const {
 } = require('../middleware/verify-parents');
 
 // GET - /api/parents
-parentRouter.get('/', restricted(), (req, res) => {
+parentRouter.get('/', (req, res) => {
   Parents.find()
     .then(parents => {
       res.status(200).json(parents)
@@ -21,7 +21,7 @@ parentRouter.get('/', restricted(), (req, res) => {
 })
 
 // GET - /api/parents/:id
-parentRouter.get('/:id', restricted(), validateParentId(), (req, res) => {
+parentRouter.get('/:id', validateParentId(), (req, res) => {
   Parents.findById(req.params.id)
     .then(parent => {
       res.status(200).json(parent)
@@ -34,7 +34,7 @@ parentRouter.get('/:id', restricted(), validateParentId(), (req, res) => {
 })
 
 // PUT - /api/parents/:id
-parentRouter.put('/:id', restricted(), validateParentId(), validateParentPost(), (req, res) => {
+parentRouter.put('/:id', validateParentId(), validateParentPost(), (req, res) => {
   const changes = req.body;
   
   Parents.update(req.params.id, changes)

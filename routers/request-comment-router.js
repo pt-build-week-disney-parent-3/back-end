@@ -11,7 +11,7 @@ const {
 
 // GET - /api/reqcomments/request/:id
 // get all request comments for a request
-requestCommentRouter.get('/request/:id', restricted(), validateRequestId(), (req, res) => {
+requestCommentRouter.get('/request/:id', validateRequestId(), (req, res) => {
   RequestComments.findRequest(req.params.id)
     .then(reqcomments => {
       res.status(200).json(reqcomments)
@@ -24,7 +24,7 @@ requestCommentRouter.get('/request/:id', restricted(), validateRequestId(), (req
 })
 
 // POST - /api/reqcomments
-requestCommentRouter.post('/', restricted(), validateRequestCommentPost(), (req, res) => {
+requestCommentRouter.post('/', validateRequestCommentPost(), (req, res) => {
   RequestComments.add(req.body)
     .then(reqcomment => {
       res.status(201).json(reqcomment)
@@ -37,7 +37,7 @@ requestCommentRouter.post('/', restricted(), validateRequestCommentPost(), (req,
 })
 
 // PUT - /api/reqcomments/:id
-requestCommentRouter.put('/:id', restricted(), validateRequestCommentId(), validateRequestCommentPost(), (req, res) => {
+requestCommentRouter.put('/:id', validateRequestCommentId(), validateRequestCommentPost(), (req, res) => {
   const changes = req.body;
 
   RequestComments.update(req.params.id, changes)
@@ -52,7 +52,7 @@ requestCommentRouter.put('/:id', restricted(), validateRequestCommentId(), valid
 })
 
 // DELETE - /api/reqcomments/:id
-requestCommentRouter.delete('/:id', restricted(), validateRequestCommentId(), (req, res) => {
+requestCommentRouter.delete('/:id', validateRequestCommentId(), (req, res) => {
   RequestComments.remove(req.params.id)
     .then(() => {
       res.status(200).json({
