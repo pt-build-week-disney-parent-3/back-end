@@ -2,14 +2,6 @@ const model = require('./offer-comment-model');
 const db = require('../database/dbConfig');
 
 describe("offer-comment-model", () => {
-  
-  beforeEach(async () => {
-    await db.seed.run();
-  })
-  
-  afterAll(async () => {
-    await db.destroy();
-  });
 
   test("findOffer", async () => {
     const res = await model.findOffer(1);
@@ -27,18 +19,18 @@ describe("offer-comment-model", () => {
     expect(offerComment.username).toBe(undefined);
   })
 
-  // Test will fail - no parent id provided
+  // Test will fail - no offer or parent id
   // test("add", async () => {
   //   await model.add({
   //     username: "tiffany88",
   //     first_name: "Tiffany",
   //     last_name: "Lynn",
   //     offer_comment: "My offer comment for testing unit",
-  //     offer_id: 1,
-  //     parent_id: 1
+  //     // offer_id: 1,
+  //     // parent_id: 1
   //   })
   //   const offerComment = await db("offer_comments");
-  //   expect(offerComment.length).toBe(1);
+  //   expect(offerComment.length).toBe(2);
   // })
 
   test("remove", async () => {

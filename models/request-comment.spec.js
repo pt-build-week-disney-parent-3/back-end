@@ -2,18 +2,10 @@ const model = require('./request-comment-model');
 const db = require('../database/dbConfig');
 
 describe("request-comment-model", () => {
-  
-  beforeEach(async () => {
-    await db.seed.run();
-  })
-  
-  afterAll(async () => {
-    await db.destroy();
-  });
 
   test("findRequest", async () => {
     const res = await model.findRequest(1);
-    expect(res.length).toBe(0);
+    expect(res.length).toBe(1);
   })
 
   test("findById", async () => {
@@ -37,12 +29,12 @@ describe("request-comment-model", () => {
       parent_id: 1
     })
     const requestComment = await db("request_comments");
-    expect(requestComment.length).toBe(1);
+    expect(requestComment.length).toBe(2);
   })
 
   test("remove", async () => {
     await model.remove(1)
     const requestComment = await db("request_comments");
-    expect(requestComment.length).toBe(0)
+    expect(requestComment.length).toBe(1)
   })
 })
