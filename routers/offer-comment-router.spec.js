@@ -4,10 +4,12 @@ const server = require('../api/server');
 const db = require('../database/dbConfig');
 
 beforeEach(async () => {
+  await db.migrate.rollback();
+  await db.migrate.latest();
   await db.seed.run();
 })
 
-afterAll(async () => {
+afterEach(async () => {
   await db.destroy();
 });
 
@@ -15,6 +17,6 @@ afterAll(async () => {
 test("get all offer comments for an offer", async () => {
   const res = await supertest(server.use(router))
     .get("/api/offercomments/offer/1")
-  expect(res.status).toBe(400)
+  expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
 })

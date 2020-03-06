@@ -4,10 +4,12 @@ const server = require('../api/server');
 const db = require('../database/dbConfig');
 
 beforeEach(async () => {
+  await db.migrate.rollback();
+  await db.migrate.latest();
   await db.seed.run();
 })
 
-afterAll(async () => {
+afterEach(async () => {
   await db.destroy();
 });
 
@@ -15,7 +17,7 @@ afterAll(async () => {
 test("get all questions", async () => {
   const res = await supertest(server.use(router))
     .get("/api/questions")
-  expect(res.status).toBe(400)
+  expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
 })
 
@@ -23,6 +25,6 @@ test("get all questions", async () => {
 test("get all questions for a single parent", async () => {
   const res = await supertest(server.use(router))
     .get("/api/questions/parent/1")
-  expect(res.status).toBe(400)
+  expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
 })

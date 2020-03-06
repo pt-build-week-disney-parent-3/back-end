@@ -1,11 +1,15 @@
 const model = require('./request-comment-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db("request_comments").truncate();
-})
-
 describe("request-comment-model", () => {
+  
+  beforeEach(async () => {
+    await db.seed.run();
+  })
+  
+  afterAll(async () => {
+    await db.destroy();
+  });
 
   test("findRequest", async () => {
     const res = await model.findRequest(1);

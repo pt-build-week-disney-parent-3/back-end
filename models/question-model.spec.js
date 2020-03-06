@@ -1,11 +1,15 @@
 const model = require('./question-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db("questions").truncate();
-})
-
 describe("question-model", () => {
+  
+  beforeEach(async () => {
+    await db.seed.run();
+  })
+  
+  afterAll(async () => {
+    await db.destroy();
+  });
 
   test("find", async () => {
     const res = await model.find();

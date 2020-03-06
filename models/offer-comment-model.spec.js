@@ -1,11 +1,15 @@
 const model = require('./offer-comment-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db("offer_comments").truncate();
-})
-
 describe("offer-comment-model", () => {
+  
+  beforeEach(async () => {
+    await db.seed.run();
+  })
+  
+  afterAll(async () => {
+    await db.destroy();
+  });
 
   test("findOffer", async () => {
     const res = await model.findOffer(1);

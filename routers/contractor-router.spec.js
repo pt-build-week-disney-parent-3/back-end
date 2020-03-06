@@ -4,10 +4,12 @@ const server = require('../api/server');
 const db = require('../database/dbConfig');
 
 beforeEach(async () => {
+  await db.migrate.rollback();
+  await db.migrate.latest();
   await db.seed.run();
 })
 
-afterAll(async () => {
+afterEach(async () => {
   await db.destroy();
 });
 
@@ -15,7 +17,7 @@ afterAll(async () => {
 test("get all contractors", async () => {
   const res = await supertest(server.use(router))
     .get("/api/contractors")
-  expect(res.status).toBe(400)
+  expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
 })
 
@@ -23,6 +25,6 @@ test("get all contractors", async () => {
 test("get a single contractor", async () => {
   const res = await supertest(server.use(router))
     .get("/api/contractor/1")
-  expect(res.status).toBe(404)
+  expect(res.status).toBe(200)
   expect(res.type).toBe("text/html")
 })

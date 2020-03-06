@@ -1,11 +1,15 @@
 const model = require('./offer-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db("offers").truncate();
-})
-
 describe("offer-model", () => {
+  
+  beforeEach(async () => {
+    await db.seed.run();
+  })
+  
+  afterAll(async () => {
+    await db.destroy();
+  });
 
   test("findContractor", async () => {
     const res = await model.findContractor(1);
