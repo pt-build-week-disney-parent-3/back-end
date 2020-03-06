@@ -1,15 +1,11 @@
 const model = require('./answer-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db.seed.run();
-})
-
 describe("answer-model", () => {
 
   test("findQuestion", async () => {
     const res = await model.findQuestion(1);
-    expect(res.length).toBeGreaterThan(0);
+    expect(res.length).toBe(1);
   })
 
   test("findById", async () => {

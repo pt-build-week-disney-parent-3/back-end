@@ -1,7 +1,9 @@
 const offerCommentRouter = require('express').Router();
 const OfferComments = require('../models/offer-comment-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateOfferId,
   validateOfferCommentId,

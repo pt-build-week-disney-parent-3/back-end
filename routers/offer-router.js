@@ -1,7 +1,9 @@
 const offerRouter = require('express').Router();
 const Offers = require('../models/offer-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateContractorId,
   validateOfferId,

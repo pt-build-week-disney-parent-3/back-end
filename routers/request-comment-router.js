@@ -1,7 +1,9 @@
 const requestCommentRouter = require('express').Router();
 const RequestComments = require('../models/request-comment-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateRequestId,
   validateRequestCommentId,

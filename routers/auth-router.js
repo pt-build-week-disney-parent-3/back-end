@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
 
 const Auth = require('../models/auth-model');
-const restricted = require('../middleware/restricted');
 
 // Token Generator
 function generateToken(user) {

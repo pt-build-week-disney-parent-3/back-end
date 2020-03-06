@@ -1,31 +1,26 @@
 const model = require('./auth-model');
 const db = require('../database/dbConfig');
 
-beforeEach(async () => {
-  await db("parents").truncate();
-  await db("contractors").truncate();
-})
-
 describe("auth-model", () => {
 
   test("findParents", async () => {
     const res = await model.findParents();
-    expect(res.length).toBe(0);
+    expect(res.length).toBe(1);
   })
 
   test("findContractors", async () => {
     const res = await model.findContractors();
-    expect(res.length).toBe(0);
+    expect(res.length).toBe(1);
   })
 
   test("findByParentFilter", async () => {
     const res = await model.findByParentFilter({ first_name: "Tiffany" });
-    expect(res).toBe(undefined);
+    expect(res.username).toBe("tiffany87");
   })
 
   test("findByContractorFilter", async () => {
     const res = await model.findByConstractorFilter({ first_name: "Tiffany" });
-    expect(res).toBe(undefined);
+    expect(res.username).toBe("tiffany88");
   })
 
   test("addParent", async () => {
@@ -45,7 +40,7 @@ describe("auth-model", () => {
 
   test("findByParentId", async () => {
     const res = await model.findParentById(1);
-    expect(res).toBe(undefined)
+    expect(res.username).toBe("tiffany87")
   })
 
   test("addContractor", async () => {
@@ -66,6 +61,6 @@ describe("auth-model", () => {
 
   test("findByContractorId", async () => {
     const res = await model.findContractorById(1);
-    expect(res).toBe(undefined)
+    expect(res.username).toBe("tiffany88")
   })
 })

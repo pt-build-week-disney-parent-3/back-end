@@ -1,9 +1,8 @@
 const authRouter = require('./auth-router');
 const supertest = require('supertest');
 
-let token;
-
 describe("Auth Router Test - Parent login", () => {
+
   it('token is being passed', async () => {
     beforeAll(done => {
       supertest(authRouter)
@@ -21,6 +20,7 @@ describe("Auth Router Test - Parent login", () => {
 })
 
 describe("Auth Router Test - Contractor login", () => {
+
   it('token is being passed', async () => {
     beforeAll(done => {
       supertest(authRouter)
@@ -38,6 +38,7 @@ describe("Auth Router Test - Contractor login", () => {
 })
 
 describe("Auth Router Test - Parent register", () => {
+
   it('token is being passed', async () => {
     beforeAll(done => {
       supertest(authRouter)
@@ -55,6 +56,7 @@ describe("Auth Router Test - Parent register", () => {
 })
 
 describe("Auth Router Test - Contractor register", () => {
+
   it('token is being passed', async () => {
     beforeAll(done => {
       supertest(authRouter)

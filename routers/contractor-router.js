@@ -1,7 +1,9 @@
 const contractorRouter = require('express').Router();
 const Contractors = require('../models/contractor-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateContractorId,
   validateContractorPost,

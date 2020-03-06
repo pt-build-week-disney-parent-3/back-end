@@ -1,7 +1,9 @@
 const questionRouter = require('express').Router();
 const Questions = require('../models/question-model');
 
-const restricted = require('../middleware/restricted');
+// Removed Restricted Middleware per request of React Team
+// const restricted = require('../middleware/restricted');
+
 const {
   validateParentId,
   validateQuestionId,
