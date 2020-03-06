@@ -5,7 +5,7 @@ exports.seed = function(knex) {
       first_name: "Tiffany",
       last_name: "Simionescu",
       request: "I'm looking for someone to watch my son while my other children and I go on Splash Mountain",
-      child_count: "1",
+      child_count: 1,
       location: "Magic Kingdom",
       time: "12:00 pm",
       stroller: false,

@@ -19,7 +19,7 @@ test("add an offer", async () => {
       first_name: "Tiffany",
       last_name: "Lynn",
       offer: "This is my offer",
-      max_child_count: "3",
+      max_child_count: 3,
       location: "Magic Kingdom",
       time: "2pm",
       contractor_id: 1
@@ -37,7 +37,7 @@ test("update an offer", async () => {
       first_name: "Tiffany",
       last_name: "Lynn",
       offer: "This is my offer updated",
-      max_child_count: "3",
+      max_child_count: 3,
       location: "Magic Kingdom",
       time: "2pm",
       contractor_id: 1

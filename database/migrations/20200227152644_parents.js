@@ -21,10 +21,10 @@ exports.up = async function(knex) {
       .notNullable()
       .unique()
 
-    parents.string("dob", 128)
+    parents.date("dob")
       .notNullable()
 
-    parents.string("phone_number", 10)
+    parents.integer("phone_number")
       .notNullable()
       .unique()
 

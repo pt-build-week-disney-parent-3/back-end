@@ -16,7 +16,7 @@ exports.up = async function(knex) {
     offers.string("offer", 500)
       .notNullable()
 
-    offers.string("max_child_count", 128)
+    offers.integer("max_child_count", 128)
       .notNullable()
 
     offers.string("location", 128)

@@ -8,7 +8,7 @@ test("get all contractors", async () => {
     .get("/")
   expect(res.status).toBe(200)
   expect(res.type).toBe("application/json")
-})
+}) 
 
 // GET - /api/contractors/:id
 test("get a single contractor", async () => {
@@ -28,10 +28,10 @@ test("update contractor", async () => {
       first_name: "Tiffany",
       last_name: "NewLastName",
       email: "e@r.com",
-      dob: "September",
-      phone_number: "0099332211",
+      dob: 19870925,
+      phone_number: 300321,
       cpr_cert: true,
-      price: "$20.00"
+      price: 20.00
     })
   expect(res.status).toBe(201)
   expect(res.type).toBe("application/json")
