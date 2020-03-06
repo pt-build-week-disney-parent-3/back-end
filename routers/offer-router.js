@@ -10,7 +10,7 @@ const {
 
 // GET - /api/offers/contractor/:id
 // Get all contractor's offers
-offerRouter.get('/contractor/:id', restricted(), validateContractorId(), (req, res) => {
+offerRouter.get('/contractor/:id', validateContractorId(), (req, res) => {
   Offers.findContractor(req.params.id)
     .then(offers => {
       res.status(200).json(offers)
@@ -23,7 +23,7 @@ offerRouter.get('/contractor/:id', restricted(), validateContractorId(), (req, r
 })
 
 // POST - /api/offers
-offerRouter.post('/', restricted(), validateOfferPost(), (req, res) => {
+offerRouter.post('/', validateOfferPost(), (req, res) => {
   Offers.add(req.body)
     .then(offer => {
       res.status(201).json(offer)
@@ -37,7 +37,7 @@ offerRouter.post('/', restricted(), validateOfferPost(), (req, res) => {
 })
 
 // PUT - /api/offers/:id
-offerRouter.put('/:id', restricted(), validateOfferId(), validateOfferPost(), (req, res) => {
+offerRouter.put('/:id', validateOfferId(), validateOfferPost(), (req, res) => {
   const changes = req.body;
 
   Offers.update(req.params.id, changes)
@@ -52,7 +52,7 @@ offerRouter.put('/:id', restricted(), validateOfferId(), validateOfferPost(), (r
 })
 
 // DELETE - /api/offers/:id
-offerRouter.delete('/:id', restricted(), validateOfferId(), (req, res) => {
+offerRouter.delete('/:id', validateOfferId(), (req, res) => {
   Offers.remove(req.params.id)
     .then(() => {
     res.status(200).json({

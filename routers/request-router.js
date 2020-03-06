@@ -10,7 +10,7 @@ const {
 
 // GET - /api/requests/parent/:id
 // get all the requests from a parent
-requestRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) => {
+requestRouter.get('/parent/:id', validateParentId(), (req, res) => {
   Requests.findParent(req.params.id)
     .then(requests => {
       res.status(200).json(requests)
@@ -23,7 +23,7 @@ requestRouter.get('/parent/:id', restricted(), validateParentId(), (req, res) =>
 })
 
 // POST - /api/requests
-requestRouter.post('/', restricted(), validateRequestPost(), (req, res) => {
+requestRouter.post('/', validateRequestPost(), (req, res) => {
   Requests.add(req.body)
     .then(request => {
       res.status(201).json(request)
@@ -37,7 +37,7 @@ requestRouter.post('/', restricted(), validateRequestPost(), (req, res) => {
 })
 
 // PUT - /api/requests/:id
-requestRouter.put('/:id', restricted(), validateRequestId(), validateRequestPost(), (req, res) => {
+requestRouter.put('/:id', validateRequestId(), validateRequestPost(), (req, res) => {
   const changes = req.body;
 
   Requests.update(req.params.id, changes)
@@ -52,7 +52,7 @@ requestRouter.put('/:id', restricted(), validateRequestId(), validateRequestPost
 })
 
 // DELETE - /api/requests/:id
-requestRouter.delete('/:id', restricted(), validateRequestId(), (req, res) => {
+requestRouter.delete('/:id', validateRequestId(), (req, res) => {
   Requests.remove(req.params.id)
     .then(() => {
       res.status(200).json({
