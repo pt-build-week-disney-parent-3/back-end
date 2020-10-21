@@ -150,3 +150,8 @@ Answers
 - Contractors can Answer Questions, respond to requests, make an offer. Cannot make requests or ask questions
 - Parents can Ask Quesions, make or answer requests. Cannot make offers or answer questions
 - Children can only be added to Parents
+
+# Tech Used
+- SQLite3
+- Express
+- Knex
